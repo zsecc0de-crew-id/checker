@@ -1,9 +1,7 @@
 #!/bin/bash
 # @plase not recode script me ;) *\\
-# @toolsname  : ^gpstracking *\\
 # @create on  : ^17-04 -2019 *\\
 # @jam : 00.07
-# @lastupdate : 12/04/2019
 # @powered by : ^zsecc0de-crew.id *\\
 clear;
 command -v curl > /dev/null 2>&1 || { echo >&2 "cURL not installed [!]"; }
