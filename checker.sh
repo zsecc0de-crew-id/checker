@@ -29,14 +29,14 @@ wid=$(curl -X POST 'https://www.ip-tracker.org/checker/email-lookup.php' --silen
      -H 'referer: https://www.ip-tracker.org/checker/email-lookup.php' --data "email=$x" --compressed | grep -o "<br />.*</div>" | cut -d "<" -f9 | grep -Po "br.*" | gawk -F / '{ print $2 }' | tr -d ">")  
      if [[ $wid =~ "a valid deliverable e-mail box address." ]]; then
          echo "[VALID] = $x" >> valid.txt
-         printf "${GREEN}[VALID] = ${NORMAL}$x # zsecc0de-crew.id ~ $timex\n"
+         printf "${GREEN}[VALID] = ${NORMAL}$x ~ $timex\n"
      else
          printf "${RED}[DIE] = ${NORMAL}$x\n"
      fi
 }
 check
 echo -en "${RED}[?] ${NORMAL}socks5 here : "; read soc
-echo -en "${RED}[?] ${NORMAL}empas here :"; read empas  
+echo -en "${RED}[?] ${NORMAL}empas here :"; read empas
 if [[ ! -f $empas ]]; then
    printf "${RED}[!] ${NORMAL}file not found \n"
    exit
@@ -44,7 +44,7 @@ fi
 #startline=30
 #endline="12"
 #sed -n ''$startline','$endline'p' $empas
-    for x in $(cat $empas); do
+for x in $(cat $empas); do
     startline=1 ###
     endline="$threads"
     counter=0
@@ -55,8 +55,6 @@ fi
     let counter++
     let startline+=$threads
     let endline+=$threads
-    scan "{$x}" &
+    scan "{$x}" & wait
   done
-  sleep 1
-}
-get
+  wait
