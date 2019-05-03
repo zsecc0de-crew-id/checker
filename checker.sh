@@ -27,7 +27,7 @@ wid=$(curl -X POST 'https://www.ip-tracker.org/checker/email-lookup.php' --silen
      -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36' \
      -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3' \
      -H 'referer: https://www.ip-tracker.org/checker/email-lookup.php' --data "email=$x" --compressed | grep -o "<br />.*</div>" | cut -d "<" -f9 | grep -Po "br.*" | gawk -F / '{ print $2 }' | tr -d ">")  
-     if [[ $wid =~ "a valid deliverable e-mail box address." ]]; then
+     if [[ $wid =~ "is a valid deliverable e-mail box address." ]]; then
          echo "[VALID] = $x" >> valid.txt
          printf "${GREEN}[VALID] = ${NORMAL}$x ~ $timex\n"
      else
@@ -49,12 +49,12 @@ for x in $(cat $empas); do
     endline="$threads"
     counter=0
     default_threads="10"
-    threads="${15:-${default_threads}}"
+    threads="${20:-${default_threads}}"
     token=$(($counter+1))
     let token++
     let counter++
     let startline+=$threads
     let endline+=$threads
-    scan "{$x}" & wait
+    scan "{$x}" &
   done
   wait
