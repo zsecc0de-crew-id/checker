@@ -24,6 +24,10 @@ main(){
 head(){
 printf "${CYAN}[+]\e[1;92msocks5 mana? = \e[0m"; read soc
 printf "${CYAN}[+]\e[1;92mlistny mana? = \e[0m"; read epas
+if [[ ! -e $epas  ]]; then
+    echo "file not found [!]"
+    exit 1
+fi
 (
 for empas in $(cat $epas); do
     startline=1 ###
