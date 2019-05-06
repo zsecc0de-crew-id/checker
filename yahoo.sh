@@ -28,8 +28,8 @@ else
 fi
 }
 function 0x0x () {
-	             echo -n "[?] simpan : "; read file
-	             echo -n "- socks:"; read soc
+	         echo -n "[?] simpan : "; read file
+	         echo -n "- socks:"; read soc
                  echo -n "- list:"; read lis
                  if [[ ! -f $lis ]]; then
                  	printf "list not found \n"
