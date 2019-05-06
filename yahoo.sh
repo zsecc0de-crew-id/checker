@@ -8,7 +8,7 @@ GREEN=$(tput setaf 2)
 RED=$(tput setaf 1)
 NORMAL=$(tput sgr0)
 CYAN=$(tput setaf 6)
-lIMIT=30
+lIMIT=15
 function menu () {
 printf "
 \t[-] Yah00 CheckeR
@@ -18,8 +18,8 @@ printf "
 menu
 function datas () {
                  cURL=$(curl --silent "http://widhitools.000webhostapp.com/api/yahoo.php?email=$x" --socks5 $soc | 
-                 jq -r .status)
-                 if [[ $cURL =~ "null" ]]; then
+                 grep -Po '(?<="status":)(.*?)(?=})' | tr -d '""')
+                 if [[ $cURL =~ "die" ]]; then
                  echo "$x" >> die.txt
                  printf "${CYAN}[*] ${NORMAL}$x > ${RED}$cURL \n"
 else
