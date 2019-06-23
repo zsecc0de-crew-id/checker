@@ -16,7 +16,7 @@ printf "
 "
 }
 menu
-function datas () {
+function datas(){
                  cURL=$(curl --silent "http://widhitools.000webhostapp.com/api/yahoo.php?email=$x" --socks5 $soc | 
                  grep -Po '(?<="status":)(.*?)(?=})' | tr -d '""')
                  if [[ $cURL =~ "die" ]]; then
@@ -27,7 +27,6 @@ else
                  printf "${CYAN}[*] ${NORMAL}$x > ${GREEN}$cURL \n"
 fi
 }
-function 0x0x () {
 	         echo -n "[?] simpan : "; read file
 	         echo -n "- socks:"; read soc
                  echo -n "- list:"; read lis
@@ -38,9 +37,8 @@ function 0x0x () {
 (
                  for x in `cat $lis`; do
                      ((i=i%lIMIT)); ((i++==0)) && wait
-	                 datas $soc &
+	                 datas "$soc" "lis" "$cURL"
 	             done
 	             wait
 )
-}
-0x0x
+
