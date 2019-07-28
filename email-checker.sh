@@ -1,11 +1,13 @@
 #!/bin/bash
 # copyright 2019 ~ widhisec
 # dibuat pada tanggal 06/05/2019
+# update pada tanggal 28/07/2019
 # https://github.com/widhisec
 GREEN=$(tput setaf 2)
 RED=$(tput setaf 1)
 NORMAL=$(tput sgr0)
 CYAN=$(tput setaf 6)
+clear
 if [[ -z $(command -v curl) ]]; then
    echo -e "need package curl ✓"
 fi
@@ -35,8 +37,8 @@ con=1
 threads=7
 printf "${CYAN}[+]\e[1;92msocks5 mana? = \e[0m"; read soc
 printf "${CYAN}[+]\e[1;92mlistny mana? = \e[0m"; read epas
-#printf "${CYAN}[+]\e[1;92mtotal list" = $u(wc -l $epas)
-if [[ ! -e $epas  ]]; then
+echo -e "${CYAN}[+]\e[1;92mtotal list =${NORMAL}" `wc -l $epas`
+if [[ ! -f $epas  ]]; then
     echo "file empas not found [!]"
     exit 1
 fi
@@ -46,6 +48,6 @@ for empas in $(cat $epas);do
        sleep $sl33p
        printf "[loading] \n"
      fi
-     main2 "$soc" "$epas"
+     main2 "$soc" "$epas" &
 done
 wait
