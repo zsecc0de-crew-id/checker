@@ -7,7 +7,7 @@ R=$(tput sgr0)
 LIMITATOR="30"
 sec='2463478a-0ade-43ad-8152-07070242caed'
 function gaskeun(){
-agent=$(shuf -n 1 "agent_.i")
+agent=$(shuf -n 1 "agent_.txt")
 gaskeun=$(curl 'https://my.hidemyass.com/LicenseController/activateLicense' -X POST --silent --user-agent "$agent" --insecure \
 -H 'Connection: keep-alive' \
 -H 'Content-Type: application/json' \
