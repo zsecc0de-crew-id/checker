@@ -1,7 +1,5 @@
 #!/bin/bash
-#gggleg8@gmail.com|h6kx#nc_hYT?v
 #https://www.phd.co.id/en/users/welcome
-# hargai dong pembuat nya ga enak tau lama buat tools :((
 # jika ada terjadi kesalahan perbaiki sendiri :(
 green=`tput setaf 2`
 reset=`tput sgr0`
